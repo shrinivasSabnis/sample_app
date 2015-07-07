@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
 
  #match '/home' => redirect('static_pages/home')
   #get 'static_pages/home'
   root  'static_pages#home'
+  #match '/microposts', to: 'microposts#create', via: 'post'
+ # match '/microposts', to: 'microposts#create', via: 'post'
+  
    match '/signup',  to: 'users#new',            via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
